@@ -1,5 +1,9 @@
 
 /* UTILISATEUR */
+CREATE TABLE IF NOT EXISTS rank (
+    rank_id int(11) PRIMARY KEY,
+    rank_name varchar(255) NOT NULL
+)
 CREATE TABLE IF NOT EXISTS user (
     user_id int(11) AUTO_INCREMENT PRIMARY KEY,
     user_name varchar(255) NOT NULL,
@@ -7,12 +11,14 @@ CREATE TABLE IF NOT EXISTS user (
     user_coins int(11) NOT NULL DEFAULT 0,
     user_level int(11) NOT NULL DEFAULT 0,
     user_experience int(11) NOT NULL DEFAULT 0,
-    user_rank int(11) NOT NULL DEFAULT 0
+    rank_id int(11) NOT NULL DEFAULT 0,
+
+    CONSTRAINT fk_rank_id FOREIGN KEY (rank_id) REFERENCES rank(rank_id)
 );
 
 /* QUESTIONS */
 CREATE TABLE IF NOT EXISTS categorie (
-    categorie_id int(11) AUTO_INCREMENT PRIMARY KEY,
+    categorie_id int(11) PRIMARY KEY,
     categorie_name varchar(255) NOT NULL
 );
 CREATE TABLE IF NOT EXISTS difficulty (
@@ -109,3 +115,32 @@ CREATE TABLE IF NOT EXISTS reponse_perso (
 
     CONSTRAINT fk_tentative_perso_id FOREIGN KEY (tentative_perso_id) REFERENCES tentative_perso(tentative_perso_id)
 );
+
+/* INSERTS */
+
+INSERT INTO rank (rank_id, rank_name) VALUES (1, 'Joueur');
+INSERT INTO rank (rank_id, rank_name) VALUES (2, 'Oiseau');
+INSERT INTO rank (rank_id, rank_name) VALUES (3, 'Super Oiseau');
+INSERT INTO rank (rank_id, rank_name) VALUES (4, 'Administrateur');
+
+INSERT INTO categorie (categorie_name) VALUES (1, 'Oiseaux');
+INSERT INTO categorie (categorie_name) VALUES (2, 'Culture Générale');
+INSERT INTO categorie (categorie_name) VALUES (3, 'Sport');
+
+INSERT INTO difficulty (difficulty_id, difficulty_name) VALUES (1, 'Facile');
+INSERT INTO difficulty (difficulty_id, difficulty_name) VALUES (2, 'Moyen');
+INSERT INTO difficulty (difficulty_id, difficulty_name) VALUES (3, 'Difficile');
+
+INSERT INTO question (categorie_id, difficulty_id, question_enonce, question_reponse)
+ VALUES (1, 1, 'Quel est l''oiseau de paris ?', 'Pigeon');
+INSERT INTO question (categorie_id, difficulty_id, question_enonce, question_reponse)
+ VALUES (1, 1, 'Quel est le mâle de la poule ?', 'Coq');
+INSERT INTO question (categorie_id, difficulty_id, question_enonce, question_reponse)
+ VALUES (1, 1, 'Quelle est la femelle d''un canard ?', 'Canne');
+INSERT INTO question (categorie_id, difficulty_id, question_enonce, question_reponse)
+ VALUES (1, 1, 'Combien de dents ont les poules', '0');
+INSERT INTO question (categorie_id, difficulty_id, question_enonce, question_reponse)
+ VALUES (1, 1, 'Quel oiseau est le symbole de la France', 'Coq');
+
+INSERT INTO categorie_shop (categorie_shop_name) VALUES ('Grades');
+INSERT INTO categorie_shop (categorie_shop_name) VALUES ('Coins');

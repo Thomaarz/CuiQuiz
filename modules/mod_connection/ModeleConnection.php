@@ -1,18 +1,16 @@
 <?php
 
+class ModeleConnection extends Connection {
 
-class ModeleConnection extends Connection
-{
-
-    public function get_account($pseudo) {
-        $prepare = self::$db->prepare("SELECT * FROM user WHERE pseudo = ?;");
-        $prepare->execute(array($pseudo));
+    public function getUser($name) {
+        $prepare = self::$db->prepare("SELECT * FROM user WHERE user_name = ?;");
+        $prepare->execute(array($name));
 
         $prepare = $prepare->fetch();
         return $prepare;
     }
 
-    public function get_all_accounts() {
+    public function getAllUsers() {
         $prepare = self::$db->prepare("SELECT * FROM user;");
         $prepare->execute(array());
 
@@ -20,8 +18,9 @@ class ModeleConnection extends Connection
         return $prepare;
     }
 
-    public function isConnected() {
-        return isset($_SESSION['pseudo']);
+    public function createUser($name, $password) {
+        $prepare = self::$db->prepare("INSERT INTO user (user_name, user_password) VALUES (?, ?);");
+        $prepare->execute(array($name, $password));
     }
 
 }

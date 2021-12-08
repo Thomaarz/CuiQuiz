@@ -1,8 +1,17 @@
 <?php
+@ini_set('display_errors', 'on');
 
+// Start session
 session_start();
 
-$vue = new VueConnection();
-$vue->show_connection();
+// Init Connection
+include "Connection.php";
+Connection::initConnection();
+
+// Modules
+include "modules/Controller.php";
+
+$controller = new Controller();
+$controller->test();
 
 ?>

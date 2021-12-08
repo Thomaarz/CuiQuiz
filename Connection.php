@@ -1,13 +1,22 @@
 <?php
 
+define('HOST', 'localhost');
+define('DB_NAME', 'cui_quiz');
+define('USER', 'quiz');
+define('PASS', 'cuicuijevole0');
 
-class Connection
-{
+class Connection {
 
     protected static $db;
 
     public static function initConnection() {
-        self::$db = new PDO('jdbc:mysql://lacraftia.fr:3306/cui_quiz', 'quiz', 'cuicuijevole0');
+        try {
+            $db = new PDO("mysql:host=" . HOST . ';dbname=' . DB_NAME, USER, PASS);
+
+            $db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo $e;
+        }
     }
 
 }

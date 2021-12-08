@@ -11,27 +11,16 @@ class Controller {
     }
 
     public function test() {
-        $module = "accueil";
-        $action = "";
+        $module = "home";
 
         if (isset($_GET['module'])) {
             $module = $_GET['module'];
         }
-        if (isset($_GET['action'])) {
-            $action = $_GET['action'];
-        }
 
         switch ($module) {
             case 'connection':
-                if ($action == 'connect') {
-                    $this->controllerConnection->connect();
-                } else if ($action == 'register') {
-                    $this->controllerConnection->register();
-                } else if ($action == 'disconnect') {
-                    $this->controllerConnection->disconnect();
-                }
+                $this->controllerConnection->main();
                 break;
         }
     }
-
 }

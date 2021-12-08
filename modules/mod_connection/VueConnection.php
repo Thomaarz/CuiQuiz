@@ -1,8 +1,6 @@
 <?php
 
-
-class VueConnection
-{
+class VueConnection {
 
     public function formConnection() {
         ?>

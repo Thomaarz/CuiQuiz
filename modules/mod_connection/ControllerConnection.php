@@ -3,8 +3,7 @@
 require "ModeleConnection.php";
 require "VueConnection.php";
 
-class ControllerConnection
-{
+class ControllerConnection {
 
     private $modele;
     private $vue;
@@ -14,7 +13,26 @@ class ControllerConnection
         $this->vue = new VueConnection();
     }
 
-    public function register() {
+    public function main() {
+        $action = "";
+        if (isset($_GET['action'])) {
+            $action = $_GET['action'];
+        }
+
+        switch ($action) {
+            case 'disconnect':
+                $this->disconnect();
+                break;
+            case 'register':
+                $this->register();
+                break;
+            default:
+                $this->connect();
+                break;
+        }
+    }
+
+    private function register() {
 
         // Register form not send
         if (!isset($_POST['register-form'])) {
@@ -44,7 +62,7 @@ class ControllerConnection
         echo $_SESSION['user_name'];
     }
 
-    public function connect() {
+    private function connect() {
 
         // Connection form not send
         if (!isset($_POST['connection-form'])) {
@@ -61,7 +79,7 @@ class ControllerConnection
         }
     }
 
-    public function disconnect() {
+    private function disconnect() {
 
         // If not connected
         if (!$this->isConnected()) {

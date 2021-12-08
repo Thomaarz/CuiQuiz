@@ -77,6 +77,28 @@ class ControllerConnection {
             $this->vue->alreadyConnected();
             return;
         }
+
+        $user_name = $_POST['pseudo'];
+        $password = $_POST['password'];
+        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+        $user = $this->modele->getUser($user_name);
+
+        if (!isset($user) || empty($user)) {
+
+            // User Not Exist
+            $this->vue->notExist();
+            return;
+        }
+
+        $user = $this->modele->getUserWithPassword($user_name, $password_hash);
+        if (!isset($user) || empty($user)) {
+
+            // Wrong Password
+            $this->vue->wrongPassword();
+            return;
+        }
+
+        $_SESSION['user_name'] = $user_name;
     }
 
     private function disconnect() {

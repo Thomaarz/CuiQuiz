@@ -34,10 +34,26 @@ class VueConnection {
         <?php
     }
 
+    public function wrongPassword() {
+        ?>
+
+        <p>Mauvais mot de passe</p>
+
+        <?php
+    }
+
     public function alreadyExist() {
         ?>
 
-        <p>Ce nom d'utilisateur est déjà utilisé, <a>Se connecter</a>.</p>
+        <p>Ce nom d'utilisateur est déjà utilisé, <a href="index.php?module=connection&action=connect">Se connecter</a>.</p>
+
+        <?php
+    }
+
+    public function notExist() {
+        ?>
+
+        <p>Vous devez tout d'abord vous inscrire, <a href="index.php?module=connection&action=register">S'inscrire'</a>.</p>
 
         <?php
     }

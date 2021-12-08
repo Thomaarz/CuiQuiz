@@ -10,6 +10,14 @@ class ModeleConnection extends Connection {
         return $prepare;
     }
 
+    public function getUserWithPassword($name, $password) {
+        $prepare = self::$db->prepare("SELECT * FROM user WHERE user_name = ? AND user_password = ?;");
+        $prepare->execute(array($name, $password));
+
+        $prepare = $prepare->fetch();
+        return $prepare;
+    }
+
     public function getAllUsers() {
         $prepare = self::$db->prepare("SELECT * FROM user;");
         $prepare->execute(array());

@@ -1,17 +1,46 @@
 <?php
 @ini_set('display_errors', 'on');
 
-// Start session
 session_start();
 
-// Init Connection
-include "Connection.php";
-Connection::initConnection();
-
-// Modules
 include "modules/Controller.php";
 
-$controller = new Controller();
-$controller->test();
+$module = "Accueil";
+if (isset($_GET['module'])) {
+    $module = $_GET['module'];
+}
 
 ?>
+<html lang="fr">
+<head>
+    <title>CuiQuiz - <?=ucfirst($module);?></title>
+    <meta charset="utf-8">
+    <link rel="icon" href="images/logo.png">
+
+    <!-- FONTS -->
+    <link rel="stylesheet" type="text/css" href="style/font.css">
+    <link href="https://fonts.googleapis.com/css?family=Ruda" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="style/default.css">
+    <link rel="stylesheet" type="text/css" href="style/header.css">
+    <link rel="stylesheet" type="text/css" href="style/nav.css">
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <link rel="stylesheet" type="text/css" href="style/footer.css">
+    <link rel="stylesheet" type="text/css" href="style/connection.css">
+    <link rel="stylesheet" type="text/css" href="style/account.css">
+    <link rel="stylesheet" type="text/css" href="style/quizz.css">
+
+</head>
+<body>
+
+<?php
+
+$controller = new Controller();
+$controller->main();
+
+?>
+
+</body>
+</html>
+

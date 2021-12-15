@@ -36,45 +36,48 @@ class ControllerConnection {
 
         // Register form not send
         if (!isset($_POST['register-form'])) {
-
-            // Show register form
             $this->vue->formRegister();
             return;
         }
 
         $user_name = $_POST['pseudo'];
+        $email = $_POST['email'];
         $password = $_POST['password'];
+        $password_confirm = $_POST['password-confirm'];
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-        // User already exist
+        // Already exist
         $user = $this->modele->getUser($user_name);
-        if (isset($user)) {
+        if (isset($user) && !empty($user)) {
             $this->vue->alreadyExist();
+            $this->vue->formRegister();
+            return;
+        }
 
-            echo 2;
+        // Different passwords
+        if ($password != $password_confirm) {
+            $this->vue->differentPassword();
+            $this->vue->formRegister();
             return;
         }
 
         // Insert user into database & set session variable
-        $this->modele->createUser($user_name, $password_hash);
+        $this->modele->createUser($user_name, $email, $password_hash);
         $_SESSION['user_name'] = $user_name;
-
-        echo $_SESSION['user_name'];
+        header( "refresh:0;url=index.php?module=compte");
     }
 
     private function connect() {
 
         // Connection form not send
         if (!isset($_POST['connection-form'])) {
-
-            // Show connection form
             $this->vue->formConnection();
             return;
         }
 
-        // If already connected
+        // Already connected
         if ($this->isConnected()) {
-            $this->vue->alreadyConnected();
+            $this->vue->connectionSuccess();
             return;
         }
 
@@ -83,22 +86,22 @@ class ControllerConnection {
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
         $user = $this->modele->getUser($user_name);
 
+        // User not exist
         if (!isset($user) || empty($user)) {
-
-            // User Not Exist
             $this->vue->notExist();
+            $this->vue->formConnection();
             return;
         }
 
-        $user = $this->modele->getUserWithPassword($user_name, $password_hash);
-        if (!isset($user) || empty($user)) {
-
-            // Wrong Password
+        // Wrong password
+        if (!password_verify($password, $user['user_password'])) {
             $this->vue->wrongPassword();
+            $this->vue->formConnection();
             return;
         }
 
         $_SESSION['user_name'] = $user_name;
+        header( "refresh:0;url=index.php?module=compte");
     }
 
     private function disconnect() {
@@ -111,6 +114,7 @@ class ControllerConnection {
         // Disconnect & unset session variable
         unset($_SESSION['user_name']);
         $this->connect();
+        header( "refresh:0;url=index.php?module=connection&action=connect");
     }
 
     private function isConnected() {

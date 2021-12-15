@@ -1,26 +1,62 @@
 <?php
 
+require_once "Connection.php";
+
+include "Vue.php";
+
+include "mod_home/ControllerHome.php";
 include "mod_connection/ControllerConnection.php";
+include "mod_account/ControllerAccount.php";
+include "mod_quiz/ControllerQuiz.php";
 
 class Controller {
 
-    private $controllerConnection;
+    private $vue;
 
     public function __construct() {
-        $this->controllerConnection = new ControllerConnection();
+        $this->vue = new Vue();
+        Connection::initConnection();
     }
 
-    public function test() {
-        $module = "home";
+    public function main() {
+        $module = "accueil";
 
         if (isset($_GET['module'])) {
             $module = $_GET['module'];
         }
 
-        switch ($module) {
-            case 'connection':
-                $this->controllerConnection->main();
-                break;
-        }
+        $this->vue->header();
+        $this->vue->nav();
+
+        ?>
+
+        <main>
+            <?php
+
+            switch ($module) {
+                case 'connection':
+                    $controller = new ControllerConnection();
+                    $controller->main();
+                    break;
+                case 'compte':
+                    $controller = new ControllerAccount();
+                    $controller->main();
+                    break;
+                case 'quizz':
+                    $controller = new ControllerQuiz();
+                    $controller->main();
+                    break;
+                default:
+                    $controller = new ControllerHome();
+                    $controller->main();
+                    break;
+            }
+
+            ?>
+        </main>
+
+        <?php
+
+        $this->vue->footer();
     }
 }

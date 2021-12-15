@@ -11,9 +11,9 @@ class Connection {
 
     public static function initConnection() {
         try {
-            $db = new PDO("mysql:host=" . HOST . ';dbname=' . DB_NAME, USER, PASS);
+            self::$db = new PDO("mysql:host=" . HOST . ';dbname=' . DB_NAME, USER, PASS);
 
-            $db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            self::$db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $error) {
             echo $error;
         }

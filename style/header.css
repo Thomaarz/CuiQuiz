@@ -1,0 +1,17 @@
+
+header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    padding: 20px;
+}
+
+header a {
+    margin: 10px;
+    font-size: 1.8em;
+}
+#header-img {
+    width: 75px;
+}

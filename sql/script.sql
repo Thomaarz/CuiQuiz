@@ -3,17 +3,16 @@
 CREATE TABLE IF NOT EXISTS rank (
     rank_id int(11) PRIMARY KEY,
     rank_name varchar(255) NOT NULL
-)
-CREATE TABLE IF NOT EXISTS user (
+);
+CREATE TABLE IF NOT EXISTS users (
     user_id int(11) AUTO_INCREMENT PRIMARY KEY,
     user_name varchar(255) NOT NULL,
     user_password varchar(255) NOT NULL,
+    user_email varchar(255) NOT NULL,
     user_coins int(11) NOT NULL DEFAULT 0,
     user_level int(11) NOT NULL DEFAULT 0,
     user_experience int(11) NOT NULL DEFAULT 0,
-    rank_id int(11) NOT NULL DEFAULT 0,
-
-    CONSTRAINT fk_rank_id FOREIGN KEY (rank_id) REFERENCES rank(rank_id)
+    rank_id int(11) NOT NULL DEFAULT 1
 );
 
 /* QUESTIONS */
@@ -37,20 +36,23 @@ CREATE TABLE IF NOT EXISTS question (
 );
 
 /* TENTATIVES */
-CREATE TABLE IF NOT EXISTS try_user (
-    try_id int(11) AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS tentative_user (
+    tentative_id int(11) AUTO_INCREMENT PRIMARY KEY,
+    tentative_date timestamp NOT NULL DEFAULT current_timestamp(),
+    tentative_correct int(11) NOT NULL,
+    tentative_wrong int(11) NOT NULL,
     user_id int(11) NOT NULL,
 
-     CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES user(user_id)
+    CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
-CREATE TABLE IF NOT EXISTS answer_user (
-    answer_id int(11) NOT NULL PRIMARY KEY,
-    try_id int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS reponse_user (
+    reponse_id int(11) AUTO_INCREMENT PRIMARY KEY,
+    tentative_id int(11) NOT NULL,
     question_id int(11) NOT NULL,
-    answer_value varchar(255) NOT NULL,
+    reponse_value varchar(255) NOT NULL,
 
-    CONSTRAINT fk_try_user_id FOREIGN KEY (try_id) REFERENCES try_user(try_id),
+    CONSTRAINT fk_tentative_user_id FOREIGN KEY (tentative_id) REFERENCES tentative_user(tentative_id),
     CONSTRAINT fk_question_id FOREIGN KEY (question_id) REFERENCES question(question_id)
 );
 
@@ -76,7 +78,7 @@ CREATE TABLE IF NOT EXISTS commande (
     user_id int(11) NOT NULL,
     commande_date timestamp NOT NULL DEFAULT current_timestamp(),
 
-    CONSTRAINT fk_commande_user_id FOREIGN KEY (user_id) REFERENCES user(user_id)
+    CONSTRAINT fk_commande_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 CREATE TABLE IF NOT EXISTS achat (
     achat_id int(11) AUTO_INCREMENT PRIMARY KEY,
@@ -92,7 +94,7 @@ CREATE TABLE IF NOT EXISTS quiz_perso (
     quiz_perso_id int(11) AUTO_INCREMENT PRIMARY KEY,
     user_id int(11) NOT NULL,
 
-    CONSTRAINT fk_quiz_user_id FOREIGN KEY (user_id) REFERENCES user(user_id)
+    CONSTRAINT fk_quiz_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 CREATE TABLE IF NOT EXISTS question_perso (
     question_perso_id int(11) AUTO_INCREMENT PRIMARY KEY,
@@ -123,9 +125,9 @@ INSERT INTO rank (rank_id, rank_name) VALUES (2, 'Oiseau');
 INSERT INTO rank (rank_id, rank_name) VALUES (3, 'Super Oiseau');
 INSERT INTO rank (rank_id, rank_name) VALUES (4, 'Administrateur');
 
-INSERT INTO categorie (categorie_name) VALUES (1, 'Oiseaux');
-INSERT INTO categorie (categorie_name) VALUES (2, 'Culture Générale');
-INSERT INTO categorie (categorie_name) VALUES (3, 'Sport');
+INSERT INTO categorie (categorie_id, categorie_name) VALUES (1, 'Oiseaux');
+INSERT INTO categorie (categorie_id, categorie_name) VALUES (2, 'Histoire');
+INSERT INTO categorie (categorie_id, categorie_name) VALUES (3, 'Sport');
 
 INSERT INTO difficulty (difficulty_id, difficulty_name) VALUES (1, 'Facile');
 INSERT INTO difficulty (difficulty_id, difficulty_name) VALUES (2, 'Moyen');

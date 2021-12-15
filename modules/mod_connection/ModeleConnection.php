@@ -1,9 +1,14 @@
 <?php
 
+require_once "Connection.php";
+
 class ModeleConnection extends Connection {
 
+    public function __construct() {
+    }
+
     public function getUser($name) {
-        $prepare = self::$db->prepare("SELECT * FROM user WHERE user_name = ?;");
+        $prepare = self::$db->prepare("SELECT * FROM users NATURAL JOIN rank WHERE user_name = ?;");
         $prepare->execute(array($name));
 
         $prepare = $prepare->fetch();
@@ -11,7 +16,7 @@ class ModeleConnection extends Connection {
     }
 
     public function getUserWithPassword($name, $password) {
-        $prepare = self::$db->prepare("SELECT * FROM user WHERE user_name = ? AND user_password = ?;");
+        $prepare = self::$db->prepare("SELECT * FROM users NATURAL JOIN rank WHERE user_name = ? AND user_password = ?;");
         $prepare->execute(array($name, $password));
 
         $prepare = $prepare->fetch();
@@ -19,16 +24,16 @@ class ModeleConnection extends Connection {
     }
 
     public function getAllUsers() {
-        $prepare = self::$db->prepare("SELECT * FROM user;");
+        $prepare = self::$db->prepare("SELECT * FROM users NATURAL JOIN rank user;");
         $prepare->execute(array());
 
         $prepare = $prepare->fetch();
         return $prepare;
     }
 
-    public function createUser($name, $password) {
-        $prepare = self::$db->prepare("INSERT INTO user (user_name, user_password) VALUES (?, ?);");
-        $prepare->execute(array($name, $password));
+    public function createUser($name, $email, $password) {
+        $prepare = self::$db->prepare("INSERT INTO users (user_name, user_email, user_password) VALUES (?, ?, ?);");
+        $prepare->execute(array($name, $email, $password));
     }
 
 }

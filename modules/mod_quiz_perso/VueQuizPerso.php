@@ -24,6 +24,37 @@ class VueQuizPerso
                     <input class="orange-button" type="submit" name="form-perso-insert" value="Ajouter">
                 </form>
             </div>
+            <nav id="quiz-perso-actions">
+                <a class="orange-button" href="index.php?module=quiz_perso">Retour</a>
+            </nav>
+        </div>
+
+        <?php
+    }
+
+    public function formUpdate($question) {
+        ?>
+
+        <div class="main-box">
+            <h1 class="main-title">Inserer question</h1>
+            <div class="main-subbox">
+                <form method="post">
+                    <div class="form-line">
+                        <label class="big-2" for="enonce">Enonce</label>
+                        <input class="input" type="text" name="enonce" value="<?=$question['question_perso_enonce'];?>" required>
+                    </div>
+
+                    <div class="form-line">
+                        <label class="big-2" for="reponse">Réponse</label>
+                        <input class="input" type="text" name="reponse" value="<?=$question['question_perso_reponse'];?>" required>
+                    </div>
+
+                    <input class="orange-button" type="submit" name="form-perso-update" value="Mettre a jour">
+                </form>
+            </div>
+            <nav id="quiz-perso-actions">
+                <a class="orange-button" href="index.php?module=quiz_perso">Retour</a>
+            </nav>
         </div>
 
         <?php
@@ -34,21 +65,30 @@ class VueQuizPerso
 
         <div class="main-box">
             <h1 class="main-title">Mes Quizs</h1>
-            <div class="main-subbox">
-                <?php
-
-                foreach ($quiz as $q) {
-                    ?>
-
-                    <a class="orange-button-small" href="index.php?module=quiz_perso&action=view&quiz_id=<?=$q['quiz_perso_id'];?>">
-                        <?=$q['quiz_perso_name'];?>
-                    </a>
-
+            <div class="quiz-perso-box">
+                <nav class="quiz-perso-box">
                     <?php
-                }
 
-                ?>
-                <nav>
+                    foreach ($quiz as $q) {
+                        $tentatives = sizeof((new ModeleQuizPerso())->getTentatives($q['quiz_perso_id']));
+                        $questions = sizeof((new ModeleQuiz())->getQuizPersoQuestions($q['quiz_perso_id']));
+                        ?>
+
+                        <div class="quiz-perso-line">
+                            <a class="orange-button-small" href="index.php?module=quiz_perso&action=view&quiz_id=<?=$q['quiz_perso_id'];?>">
+                                <?=$q['quiz_perso_name'];?>
+                            </a>
+                            <h2>Tentatives: <?=$tentatives;?></h2>
+                            <h2>Questions: <?=$questions;?></h2>
+                        </div>
+
+                        <?php
+                    }
+
+                    ?>
+                </nav>
+                <nav id="quiz-perso-manage-actions">
+                    <a class="orange-button" href="index.php?module=quiz_perso&action=create">Retour</a>
                     <a class="orange-button" href="index.php?module=quiz_perso&action=create">Creer un quiz</a>
                 </nav>
             </div>
@@ -62,18 +102,23 @@ class VueQuizPerso
 
         <div class="main-box">
             <h1 class="main-title">Quiz <?=$quiz['quiz_perso_name'];?></h1>
-            <div class="main-subbox">
+            <div class="quiz-perso-box">
                 <?php
 
                 foreach ($questions as $question) {
                     ?>
 
-                    <div class="quiz-perso-view-line">
+                    <div class="quiz-perso-line">
                         <h2><?=$question['question_perso_enonce'];?></h2>
                         <h2><?=$question['question_perso_reponse'];?></h2>
-                        <a class="orange-button-small" href="index.php?module=quiz_perso&action=delete&question_id=<?=$question['question_perso_id'];?>">
-                            Supprimer la question
-                        </a>
+                        <div class="quiz-perso-line-actions">
+                            <a id="quiz-view-edit" class="orange-button-small" href="index.php?module=quiz_perso&action=edit&question_id=<?=$question['question_perso_id'];?>">
+                                Modifier
+                            </a>
+                            <a class="orange-button-small" href="index.php?module=quiz_perso&action=delete&question_id=<?=$question['question_perso_id'];?>">
+                                Supprimer
+                            </a>
+                        </div>
                     </div>
 
                     <?php
@@ -82,6 +127,7 @@ class VueQuizPerso
                 ?>
                 <nav id="quiz-perso-actions">
                     <div>
+                        <a class="orange-button" href="index.php?module=quiz_perso">Retour</a>
                         <a class="orange-button" href="index.php?module=quiz_perso&action=insert&quiz_id=<?=$quiz['quiz_perso_id'];?>">Inserer une question</a>
                         <a class="orange-button" href="index.php?module=quiz&action=play&category=perso&id=<?=$quiz['quiz_perso_id'];?>">Tester le quiz</a>
                     </div>
@@ -133,7 +179,18 @@ class VueQuizPerso
         <?php
     }
 
-    public function createquiz() {
+    public function updateQuestion() {
+        ?>
+
+        <div class="success-message">
+            <p class="big-1">Question mise à jour avec succès !</p>
+        </div>
+
+        <?php
+    }
+
+
+    public function createQuiz() {
         ?>
 
         <div class="success-message">
@@ -143,7 +200,7 @@ class VueQuizPerso
         <?php
     }
 
-    public function deletequiz() {
+    public function deleteQuiz() {
         ?>
 
         <div class="success-message">

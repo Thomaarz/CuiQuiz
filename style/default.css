@@ -16,20 +16,6 @@ body {
     color: #34A6F7;
 }
 
-/* SIZES */
-.big-1 {
-    font-size: 1.2em;
-}
-.big-2 {
-    font-size: 1.5em;
-}
-.big-3 {
-    font-size: 1.8em;
-}
-.big-4 {
-    font-size: 2.1em;
-}
-
 /* DECORATION */
 .undecorated {
     text-decoration: none;
@@ -161,6 +147,20 @@ form {
     margin: 10px 0;
     border-radius: 5px;
     overflow: hidden;
+}
+
+/* SIZES */
+.big-1 {
+    font-size: 1.2em;
+}
+.big-2 {
+    font-size: 1.5em;
+}
+.big-3 {
+    font-size: 1.8em;
+}
+.big-4 {
+    font-size: 2.1em;
 }
 
 @media (max-width: 1080px) {

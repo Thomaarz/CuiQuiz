@@ -5,7 +5,7 @@ require_once "Connection.php";
 class ModeleQuizPerso extends Connection
 {
 
-    public function getquizPersoByUser($user_id) {
+    public function getQuizPersoByUser($user_id) {
         $prepare = self::$db->prepare("SELECT * FROM quiz_perso WHERE user_id = ?;");
         $prepare->execute(array($user_id));
 
@@ -13,7 +13,23 @@ class ModeleQuizPerso extends Connection
         return $prepare;
     }
 
-    public function getquizPerso($quiz_perso_id) {
+    public function getTentatives($quiz_perso_id) {
+        $prepare = self::$db->prepare("SELECT * FROM tentative_perso WHERE quiz_perso_id = ?;");
+        $prepare->execute(array($quiz_perso_id));
+
+        $prepare = $prepare->fetchAll();
+        return $prepare;
+    }
+
+    public function getQuizPersoQuestions($question_perso_id) {
+        $prepare = self::$db->prepare("SELECT * FROM question_perso WHERE question_perso_id = ?;");
+        $prepare->execute(array($question_perso_id));
+
+        $prepare = $prepare->fetch();
+        return $prepare;
+    }
+
+    public function getQuizPerso($quiz_perso_id) {
         $prepare = self::$db->prepare("SELECT * FROM quiz_perso WHERE quiz_perso_id = ?;");
         $prepare->execute(array($quiz_perso_id));
 
@@ -21,7 +37,7 @@ class ModeleQuizPerso extends Connection
         return $prepare;
     }
 
-    public function insertquizPerso($name, $user_id) {
+    public function insertQuizPerso($name, $user_id) {
         $prepare = self::$db->prepare("INSERT INTO quiz_perso (quiz_perso_name, user_id) VALUES (?, ?);");
         $prepare->execute(array($name, $user_id));
 
@@ -38,6 +54,11 @@ class ModeleQuizPerso extends Connection
     public function deleteQuestionPerso($question_perso_id) {
         $prepare = self::$db->prepare("DELETE FROM question_perso WHERE question_perso_id = ?;");
         $prepare->execute(array($question_perso_id));
+    }
+
+    public function updateQuestionPerso($question_perso_id, $enonce, $reponse) {
+        $prepare = self::$db->prepare("UPDATE question_perso SET question_perso_enonce = ?, question_perso_reponse = ? WHERE question_perso_id = ?;");
+        $prepare->execute(array($enonce, $reponse, $question_perso_id));
     }
 
     public function deleteQuizPerso($quiz_perso_id) {

@@ -18,7 +18,7 @@ class VueConnection {
                     <input class="input" type="password" name="password" placeholder="Mot de Passe" required>
                 </div>
 
-                <input class="orange-button" type="submit" name="connection-form">
+                <input class="orange-button" type="submit" name="connection-form" value="Se Connecter">
             </form>
             <p class="big-1">
                 Pas encore inscrits ? Clique <a class="orange-button-small" href="index.php?module=connection&action=register">ici</a>.

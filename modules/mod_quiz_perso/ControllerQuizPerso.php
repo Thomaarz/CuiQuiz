@@ -48,6 +48,9 @@ class ControllerQuizPerso
             case "delete":
                 $this->delete($quiz_id);
                 break;
+            case "edit":
+                $this->edit();
+                break;
             default:
                 $this->manageQuiz($user);
                 break;
@@ -55,7 +58,7 @@ class ControllerQuizPerso
     }
 
     private function manageQuiz($user) {
-        $this->vue->manage($this->modele->getquizPersoByUser($user['user_id']));
+        $this->vue->manage($this->modele->getQuizPersoByUser($user['user_id']));
     }
 
     private function view($quiz_id) {
@@ -63,14 +66,14 @@ class ControllerQuizPerso
             return;
         }
 
-        $this->vue->view($this->modele->getquizPerso($quiz_id), (new ModeleQuiz())->getquizPersoQuestions($quiz_id));
+        $this->vue->view($this->modele->getQuizPerso($quiz_id), (new ModeleQuiz())->getQuizPersoQuestions($quiz_id));
     }
 
     private function create($user) {
         if (isset($_POST['form-perso-create'])) {
             $quiz_id = $this->modele->insertquizPerso($_POST['name'], $user['user_id']);
-            $this->vue->createquiz();
-            header("refresh:1;url=index.php?module=quiz_perso&action=insert&quiz_id=" . $quiz_id);
+            $this->vue->createQuiz();
+            header("refresh:1;url=index.php?module=quiz_perso&action=view&quiz_id=" . $quiz_id);
             return;
         }
 
@@ -86,7 +89,7 @@ class ControllerQuizPerso
 
             $this->modele->insertQuestionPerso($quiz_id, $_POST['enonce'], $_POST['reponse']);
             $this->vue->addQuestion();
-            header("refresh:2;url=index.php?module=quiz_perso&action=insert&quiz_id=" . $quiz_id);
+            header("refresh:2;url=index.php?module=quiz_perso&action=view&quiz_id=" . $quiz_id);
             return;
         }
 
@@ -114,8 +117,34 @@ class ControllerQuizPerso
 
         // Delete quiz
         $this->modele->deleteQuizPerso($quiz_id);
-        $this->vue->deletequiz();
+        $this->vue->deleteQuiz();
         header("refresh:1;url=index.php?module=quiz_perso");
+
+    }
+
+    public function edit() {
+
+        $question_id = -1;
+        if (isset($_GET['question_id'])) {
+            $question_id = $_GET['question_id'];
+        }
+
+        if ($question_id == -1) {
+            return;
+        }
+
+        $question = $this->modele->getQuizPersoQuestions($question_id);
+
+        // Update question
+        if (isset($_POST['form-perso-update'])) {
+            $this->modele->updateQuestionPerso($question_id, $_POST['enonce'], $_POST['reponse']);
+            $this->vue->updateQuestion();
+            header("refresh:1;url=index.php?module=quiz_perso&action=view&quiz_id=" . $question['quiz_perso_id']);
+            return;
+        }
+
+        // Show form
+        $this->vue->formUpdate($question);
 
     }
 

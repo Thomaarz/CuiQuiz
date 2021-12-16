@@ -12,7 +12,7 @@ class ModeleQuiz extends Connection {
         return $prepare;
     }
 
-    public function getquizPersoQuestions($quiz_perso_id) {
+    public function getQuizPersoQuestions($quiz_perso_id) {
         $prepare = self::$db->prepare("SELECT * FROM question_perso WHERE quiz_perso_id = ?;");
         $prepare->execute(array($quiz_perso_id));
 

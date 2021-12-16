@@ -33,7 +33,7 @@ class Vue
 
         <nav class="menu-nav">
             <a href="index.php?module=accueil" class="white undecorated">Accueil</a>
-            <a href="index.php?module=quizz" class="white undecorated">Quizz</a>
+            <a href="index.php?module=quiz" class="white undecorated">quiz</a>
             <a href="index.php?module=boutique" class="white undecorated">Boutique</a>
             <a href="index.php?module=classement" class="white undecorated">Classement</a>
         </nav>

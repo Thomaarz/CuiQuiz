@@ -29,7 +29,7 @@ if (isset($_GET['module'])) {
     <link rel="stylesheet" type="text/css" href="style/footer.css">
     <link rel="stylesheet" type="text/css" href="style/connection.css">
     <link rel="stylesheet" type="text/css" href="style/account.css">
-    <link rel="stylesheet" type="text/css" href="style/quizz.css">
+    <link rel="stylesheet" type="text/css" href="style/quiz.css">
 
 </head>
 <body>

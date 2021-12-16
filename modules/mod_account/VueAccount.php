@@ -4,7 +4,7 @@
 class VueAccount
 {
 
-    public function main($user) {
+    public function infos($user) {
         ?>
 
         <div class="main-box">
@@ -37,7 +37,7 @@ class VueAccount
                 </div>
                 <div id="account-bottom">
                     <a class="orange-button">Historique</a>
-                    <a class="orange-button">Theme personnalise</a>
+                    <a href="index.php?module=quiz_perso" class="orange-button">Quiz personnalise</a>
                     <a href="index.php?module=connection&action=disconnect" class="orange-button">Deconnexion</a>
                 </div>
             </div>

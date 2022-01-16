@@ -30,6 +30,8 @@ if (isset($_GET['module'])) {
     <link rel="stylesheet" type="text/css" href="style/connection.css">
     <link rel="stylesheet" type="text/css" href="style/account.css">
     <link rel="stylesheet" type="text/css" href="style/quiz.css">
+    <link rel="stylesheet" type="text/css" href="style/shop.css">
+    <link rel="stylesheet" type="text/css" href="style/classement.css">
 
 </head>
 <body>

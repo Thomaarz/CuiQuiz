@@ -10,14 +10,14 @@ class VueQuiz {
             <h1 class="main-title">Choix</h1>
             <div class="main-subbox" id="quiz-main">
                 <div id="quiz-categories">
-                    <h2 class="orange-button">Categories</h2>
+                    <h2 class="blue-button">Categories</h2>
                     <nav>
                         <?php
 
                         foreach ($categories as $category) {
                             ?>
 
-                            <a href="index.php?module=quiz&action=play&category=<?=$category['categorie_id'];?>" class="orange-button-small">
+                            <a href="index.php?module=quiz&action=play&category=<?=$category['categorie_id'];?>" class="blue-button-small">
                                 <?=ucfirst($category['categorie_name']);?>
                             </a>
 
@@ -33,17 +33,19 @@ class VueQuiz {
         <?php
     }
 
-    public function quizRecap($questions, $corrects, $wrongs, $percent) {
+    public function quizRecap($questions, $corrects, $wrongs, $percent, $coins, $experience) {
         ?>
 
         <div class="main-box">
             <h1 class="main-title">Recapitulatif</h1>
             <div class="main-subbox">
                 <p class="big-2">
-                    Vous avez répondu à un total de <span class="orange-button-small"><?=$corrects + $wrongs;?></span>
-                    questions. Vous avez eu bon à <span class="orange-button-small"><?=$corrects;?></span> questions et faux
-                    à <span class="orange-button-small"><?=$wrongs;?></span> questions.<br/>
-                    Votre score est de <span class="orange-button-small"><?=$percent;?></span>%.
+                    Vous avez répondu à un total de <span class="blue-button-small"><?=$corrects + $wrongs;?></span>
+                    questions. Vous avez eu bon à <span class="blue-button-small"><?=$corrects;?></span> questions et faux
+                    à <span class="blue-button-small"><?=$wrongs;?></span> questions. Vous gagnez
+                    <span class="blue-button-small"><?=$coins;?></span> coins et <span class="blue-button-small"><?=$experience;?></span>
+                    expérience !<br/>
+                    Votre score est de <span class="blue-button-small"><?=$percent;?></span>%.
                 </p>
 
                 <div class="quiz-recap-box">
@@ -68,7 +70,7 @@ class VueQuiz {
                 </div>
 
                 <p class="big-2">
-                    Bien joué à toi ! Clique <a class="orange-button-small" href="index.php?module=quiz&action=choose">ici</a> pour
+                    Bien joué à toi ! Clique <a class="blue-button-small" href="index.php?module=quiz&action=choose">ici</a> pour
                     rejouer !
                 </p>
             </div>
@@ -84,10 +86,10 @@ class VueQuiz {
             <h1 class="main-title">Recapitulatif</h1>
             <div class="main-subbox">
                 <p class="big-2">
-                    Vous avez répondu à un total de <span class="orange-button-small"><?=$corrects + $wrongs;?></span>
-                    questions. Vous avez eu bon à <span class="orange-button-small"><?=$corrects;?></span> questions et faux
-                    à <span class="orange-button-small"><?=$wrongs;?></span> questions.<br/>
-                    Votre score est de <span class="orange-button-small"><?=$percent;?></span>%.
+                    Vous avez répondu à un total de <span class="blue-button-small"><?=$corrects + $wrongs;?></span>
+                    questions. Vous avez eu bon à <span class="blue-button-small"><?=$corrects;?></span> questions et faux
+                    à <span class="blue-button-small"><?=$wrongs;?></span> questions.<br/>
+                    Votre score est de <span class="blue-button-small"><?=$percent;?></span>%.
                 </p>
 
                 <div class="quiz-recap-box">
@@ -112,7 +114,7 @@ class VueQuiz {
                 </div>
 
                 <p class="big-2">
-                    Bien joué à toi ! Clique <a class="orange-button-small" href="index.php?module=quiz&action=choose">ici</a> pour
+                    Bien joué à toi ! Clique <a class="blue-button-small" href="index.php?module=quiz&action=choose">ici</a> pour
                     rejouer !
                 </p>
             </div>
@@ -126,7 +128,7 @@ class VueQuiz {
 
         <div class="main-box">
             <form method="post" autocomplete="off">
-                <h2 class="orange-button">quiz de <?=sizeof($questions);?> questions</h2>
+                <h2 class="blue-button">quiz de <?=sizeof($questions);?> questions</h2>
                 <?php
 
                 $id = 1;
@@ -136,7 +138,7 @@ class VueQuiz {
                 }
 
                 ?>
-                <input type="submit" class="orange-button" name="form-quiz" value="Envoyer">
+                <input type="submit" class="blue-button" name="form-quiz" value="Envoyer">
             </form>
         </div>
 
@@ -160,7 +162,7 @@ class VueQuiz {
 
         <div class="main-box">
             <form method="post" autocomplete="off">
-                <h2 class="orange-button">quiz Personnalise de <?=sizeof($questions);?> questions</h2>
+                <h2 class="blue-button">quiz Personnalise de <?=sizeof($questions);?> questions</h2>
                 <?php
 
                 $id = 1;
@@ -170,7 +172,7 @@ class VueQuiz {
                 }
 
                 ?>
-                <input type="submit" class="orange-button" name="form-quiz-perso" value="Envoyer">
+                <input type="submit" class="blue-button" name="form-quiz-perso" value="Envoyer">
             </form>
         </div>
 

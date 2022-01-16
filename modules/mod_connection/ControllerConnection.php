@@ -37,6 +37,7 @@ class ControllerConnection {
         // Register form not send
         if (!isset($_POST['register-form'])) {
             $this->vue->formRegister();
+            header( "refresh:1;url=index.php?module=compte");
             return;
         }
 
@@ -83,7 +84,6 @@ class ControllerConnection {
 
         $user_name = $_POST['pseudo'];
         $password = $_POST['password'];
-        $password_hash = password_hash($password, PASSWORD_DEFAULT);
         $user = $this->modele->getUser($user_name);
 
         // User not exist

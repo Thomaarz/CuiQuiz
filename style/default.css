@@ -30,25 +30,25 @@ body {
     font-weight: bold;
 }
 .link {
-    color: #E18612;
+    color: #3380FF;
     text-decoration: none;
     transition: all .2s ease-in-out;
 }
 .link:hover {
-    color: #fdaf4e;
+    color: #33B2FF;
 }
 
 /* BUTTONS */
-.orange-button {
-    background-color: #E18612;
+.blue-button {
+    background-color: #3380FF;
     border-radius: 5px;
 
     text-decoration: none;
 
     border: none;
-    border-bottom: 4px #ac6001 solid;
-    border-right: 4px #ac6001 solid;
-    color: #402600;
+    border-bottom: 4px #3352FF solid;
+    border-right: 4px #3352FF solid;
+    color: #1E2A6C;
 
     font-family: BrokenHome, sans-serif;
 
@@ -56,16 +56,16 @@ body {
     margin: 10px 0;
     font-size: 1.2em;
 }
-.orange-button-small {
-    background-color: #E18612;
+.blue-button-small {
+    background-color: #3380FF;
     border-radius: 5px;
 
     text-decoration: none;
 
     border: none;
-    border-bottom: 4px #ac6001 solid;
-    border-right: 4px #ac6001 solid;
-    color: #402600;
+    border-bottom: 4px #3352FF solid;
+    border-right: 4px #3352FF solid;
+    color: #1E2A6C;
 
     font-family: BrokenHome, sans-serif;
 

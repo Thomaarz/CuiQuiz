@@ -14,11 +14,11 @@ class Vue
 
             if (isset($_SESSION['user_name'])) {
                 ?>
-                <a href="index.php?module=compte" class="orange-button">Mon Compte</a>
+                <a href="index.php?module=compte" class="blue-button">Mon Compte</a>
                 <?php
             } else{
                 ?>
-                <a href="index.php?module=connection&action=connect" class="orange-button">Connexion</a>
+                <a href="index.php?module=connection&action=connect" class="blue-button">Connexion</a>
                 <?php
             }
 

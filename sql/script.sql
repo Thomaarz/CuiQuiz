@@ -4,6 +4,10 @@ CREATE TABLE IF NOT EXISTS rank (
     rank_id int(11) PRIMARY KEY,
     rank_name varchar(255) NOT NULL
 );
+CREATE TABLE IF NOT EXISTS titre (
+    titre_id int(11) PRIMARY KEY,
+    titre_name varchar(255) NOT NULL
+);
 CREATE TABLE IF NOT EXISTS users (
     user_id int(11) AUTO_INCREMENT PRIMARY KEY,
     user_name varchar(255) NOT NULL,
@@ -12,7 +16,8 @@ CREATE TABLE IF NOT EXISTS users (
     user_coins int(11) NOT NULL DEFAULT 0,
     user_level int(11) NOT NULL DEFAULT 0,
     user_experience int(11) NOT NULL DEFAULT 0,
-    rank_id int(11) NOT NULL DEFAULT 1
+    rank_id int(11) NOT NULL DEFAULT 1,
+    titre_id int(11) NOT NULL DEFAULT 1
 );
 
 /* QUESTIONS */
@@ -57,7 +62,9 @@ CREATE TABLE IF NOT EXISTS reponse_user (
 /* BOUTIQUE */
 CREATE TABLE IF NOT EXISTS categorie_shop (
     categorie_shop_id int(11) AUTO_INCREMENT PRIMARY KEY,
-    categorie_shop_name varchar(255) NOT NULL
+    categorie_shop_name varchar(255) NOT NULL,
+    categorie_shop_description varchar(255) NOT NULL,
+    categorie_shop_image varchar(255) NOT NULL
 );
 CREATE TABLE IF NOT EXISTS item_shop (
     item_shop_id int(11) AUTO_INCREMENT PRIMARY KEY,
@@ -128,6 +135,11 @@ INSERT INTO rank (rank_id, rank_name) VALUES (1, 'Joueur');
 INSERT INTO rank (rank_id, rank_name) VALUES (2, 'Oiseau');
 INSERT INTO rank (rank_id, rank_name) VALUES (3, 'Super Oiseau');
 INSERT INTO rank (rank_id, rank_name) VALUES (4, 'Administrateur');
+
+INSERT INTO titre (rank_id, rank_name) VALUES (1, 'Débutant');
+INSERT INTO titre (rank_id, rank_name) VALUES (2, 'Expert');
+INSERT INTO titre (rank_id, rank_name) VALUES (3, 'Pro');
+INSERT INTO titre (rank_id, rank_name) VALUES (4, 'Légende');
 
 INSERT INTO categorie (categorie_id, categorie_name) VALUES (1, 'Oiseaux');
 INSERT INTO categorie (categorie_id, categorie_name) VALUES (2, 'Histoire');
@@ -253,8 +265,10 @@ INSERT INTO question (categorie_id, difficulty_id, question_enonce, question_rep
 
  /* SHOP*/
 
-INSERT INTO categorie_shop (categorie_shop_name) VALUES ('Grades');
-INSERT INTO categorie_shop (categorie_shop_name) VALUES ('Titres');
+INSERT INTO categorie_shop (categorie_shop_name, categorie_shop_description, categorie_shop_image)
+ VALUES ('Grades', 'Les grades sont affichés dans le classement et sur votre profil', 'ranks.png');
+INSERT INTO categorie_shop (categorie_shop_name, categorie_shop_description, categorie_shop_image)
+ VALUES ('Titres', 'Les titres sont affichés dans le classement !', 'titres.png');
 
 INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description, item_shop_image, item_shop_price)
  VALUES (1, 'Oiseau', 'Un magnifique grade qui vous fera vous envoler vers le haut du classement !', 'oiseau.png', 500);
@@ -265,7 +279,7 @@ INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description,
  VALUES (2, 'Débutant', 'Affichez le titre Débutant dans le classement', 'debutant.png', 100);
 INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description, item_shop_image, item_shop_price)
  VALUES (2, 'Expert', 'Affichez le titre Expert dans le classement', 'debutant.png', 200);
- INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description, item_shop_image, item_shop_price)
+INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description, item_shop_image, item_shop_price)
  VALUES (2, 'Pro', 'Affichez le titre Pro dans le classement', 'debutant.png', 300);
- INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description, item_shop_image, item_shop_price)
+INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description, item_shop_image, item_shop_price)
  VALUES (2, 'Légende', 'Affichez le titre Légende dans le classement', 'debutant.png', 400);

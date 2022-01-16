@@ -18,10 +18,10 @@ class VueConnection {
                     <input class="input" type="password" name="password" placeholder="Mot de Passe" required>
                 </div>
 
-                <input class="orange-button" type="submit" name="connection-form" value="Se Connecter">
+                <input class="blue-button" type="submit" name="connection-form" value="Se Connecter">
             </form>
             <p class="big-1">
-                Pas encore inscrits ? Clique <a class="orange-button-small" href="index.php?module=connection&action=register">ici</a>.
+                Pas encore inscrits ? Clique <a class="blue-button-small" href="index.php?module=connection&action=register">ici</a>.
             </p>
         </div>
 
@@ -54,10 +54,10 @@ class VueConnection {
                     <input class="input" type="password" name="password-confirm" placeholder="Mot de Passe" required>
                 </div>
 
-                <input class="orange-button" type="submit" name="register-form" value="S'inscrire">
+                <input class="blue-button" type="submit" name="register-form" value="S'inscrire">
             </form>
             <p class="big-1">
-                Déjà inscrits ? Clique <a class="orange-button-small" href="index.php?module=connection&action=connect">ici</a>.
+                Déjà inscrits ? Clique <a class="blue-button-small" href="index.php?module=connection&action=connect">ici</a>.
             </p>
         </div>
 

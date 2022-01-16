@@ -21,11 +21,11 @@ class VueQuizPerso
                         <input class="input" type="text" name="reponse" placeholder="réponse" required>
                     </div>
 
-                    <input class="orange-button" type="submit" name="form-perso-insert" value="Ajouter">
+                    <input class="blue-button" type="submit" name="form-perso-insert" value="Ajouter">
                 </form>
             </div>
             <nav id="quiz-perso-actions">
-                <a class="orange-button" href="index.php?module=quiz_perso">Retour</a>
+                <a class="blue-button" href="index.php?module=quiz_perso">Retour</a>
             </nav>
         </div>
 
@@ -49,11 +49,11 @@ class VueQuizPerso
                         <input class="input" type="text" name="reponse" value="<?=$question['question_perso_reponse'];?>" required>
                     </div>
 
-                    <input class="orange-button" type="submit" name="form-perso-update" value="Mettre a jour">
+                    <input class="blue-button" type="submit" name="form-perso-update" value="Mettre a jour">
                 </form>
             </div>
             <nav id="quiz-perso-actions">
-                <a class="orange-button" href="index.php?module=quiz_perso">Retour</a>
+                <a class="blue-button" href="index.php?module=quiz_perso">Retour</a>
             </nav>
         </div>
 
@@ -75,7 +75,7 @@ class VueQuizPerso
                         ?>
 
                         <div class="quiz-perso-line">
-                            <a class="orange-button-small" href="index.php?module=quiz_perso&action=view&quiz_id=<?=$q['quiz_perso_id'];?>">
+                            <a class="blue-button-small" href="index.php?module=quiz_perso&action=view&quiz_id=<?=$q['quiz_perso_id'];?>">
                                 <?=$q['quiz_perso_name'];?>
                             </a>
                             <h2>Tentatives: <?=$tentatives;?></h2>
@@ -88,8 +88,8 @@ class VueQuizPerso
                     ?>
                 </nav>
                 <nav id="quiz-perso-manage-actions">
-                    <a class="orange-button" href="index.php?module=compte">Retour</a>
-                    <a class="orange-button" href="index.php?module=quiz_perso&action=create">Creer un quiz</a>
+                    <a class="blue-button" href="index.php?module=compte">Retour</a>
+                    <a class="blue-button" href="index.php?module=quiz_perso&action=create">Creer un quiz</a>
                 </nav>
             </div>
         </div>
@@ -112,10 +112,10 @@ class VueQuizPerso
                         <h2><?=$question['question_perso_enonce'];?></h2>
                         <h2><?=$question['question_perso_reponse'];?></h2>
                         <div class="quiz-perso-line-actions">
-                            <a id="quiz-view-edit" class="orange-button-small" href="index.php?module=quiz_perso&action=edit&question_id=<?=$question['question_perso_id'];?>">
+                            <a id="quiz-view-edit" class="blue-button-small" href="index.php?module=quiz_perso&action=edit&question_id=<?=$question['question_perso_id'];?>">
                                 Modifier
                             </a>
-                            <a class="orange-button-small" href="index.php?module=quiz_perso&action=delete&question_id=<?=$question['question_perso_id'];?>">
+                            <a class="blue-button-small" href="index.php?module=quiz_perso&action=delete&question_id=<?=$question['question_perso_id'];?>">
                                 Supprimer
                             </a>
                         </div>
@@ -127,11 +127,11 @@ class VueQuizPerso
                 ?>
                 <nav id="quiz-perso-actions">
                     <div>
-                        <a class="orange-button" href="index.php?module=quiz_perso">Retour</a>
-                        <a class="orange-button" href="index.php?module=quiz_perso&action=insert&quiz_id=<?=$quiz['quiz_perso_id'];?>">Inserer une question</a>
-                        <a class="orange-button" href="index.php?module=quiz&action=play&category=perso&id=<?=$quiz['quiz_perso_id'];?>">Tester le quiz</a>
+                        <a class="blue-button" href="index.php?module=quiz_perso">Retour</a>
+                        <a class="blue-button" href="index.php?module=quiz_perso&action=insert&quiz_id=<?=$quiz['quiz_perso_id'];?>">Inserer une question</a>
+                        <a class="blue-button" href="index.php?module=quiz&action=play&category=perso&id=<?=$quiz['quiz_perso_id'];?>">Tester le quiz</a>
                     </div>
-                    <a class="orange-button" href="index.php?module=quiz_perso&action=delete&quiz_id=<?=$quiz['quiz_perso_id'];?>">Supprimer</a>
+                    <a class="blue-button" href="index.php?module=quiz_perso&action=delete&quiz_id=<?=$quiz['quiz_perso_id'];?>">Supprimer</a>
                 </nav>
             </div>
         </div>
@@ -151,7 +151,7 @@ class VueQuizPerso
                         <input class="input" type="text" name="name" placeholder="Nom" required>
                     </div>
 
-                    <input class="orange-button" type="submit" name="form-perso-create" value="Creer">
+                    <input class="blue-button" type="submit" name="form-perso-create" value="Creer">
                 </form>
             </div>
         </div>

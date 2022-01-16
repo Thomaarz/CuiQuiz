@@ -96,9 +96,15 @@ class ControllerQuiz {
                 $this->modele->insertReponses($tentative_id, $question['question_id'], $input_answer);
             }
         }
+        $coins = $corrects * 2;
+        $experience = $corrects * 10;
+        if ($connected) {
+            $this->modele->addCoins($user['user_id'], $coins);
+            $this->modele->addExperience($user['user_id'], $experience);
+        }
         $total = $corrects + $wrongs;
         $percent = round(($corrects * 100) / ($total < 1 ? 1 : $total), 0);
-        $this->vue->quizRecap($questions, $corrects, $wrongs, $percent);
+        $this->vue->quizRecap($questions, $corrects, $wrongs, $percent, $coins, $experience);
         unset($_SESSION['questions']);
     }
 

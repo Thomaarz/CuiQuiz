@@ -4,6 +4,33 @@ require_once "Connection.php";
 
 class ModeleQuiz extends Connection {
 
+    public function addCoins($user_id, $coins) {
+        $prepare = self::$db->prepare("UPDATE users SET user_coins = user_coins + ? WHERE user_id = ?;");
+        $prepare->execute(array($coins, $user_id));
+    }
+
+    public function getExperience($user_id) {
+        $prepare = self::$db->prepare("SELECT user_experience FROM users WHERE user_id = ?;");
+        $prepare->execute(array($user_id));
+
+        $prepare = $prepare->fetch();
+        return $prepare[0];
+    }
+
+    public function addExperience($user_id, $experience) {
+        $current_experience = $this->getExperience($user_id);
+        $current_experience += $experience;
+        $level_to_add = 0;
+
+        while ($current_experience >= 1000) {
+            $current_experience -= 1000;
+            $level_to_add++;
+        }
+
+        $prepare = self::$db->prepare("UPDATE users SET user_experience = ?, user_level = user_level + ? WHERE user_id = ?;");
+        $prepare->execute(array($current_experience, $level_to_add, $user_id));
+    }
+
     public function getRandomQuestions($categorie_id) {
         $prepare = self::$db->prepare("SELECT * FROM question NATURAL JOIN categorie WHERE categorie_id = ? ORDER BY rand() DESC LIMIT 10;");
         $prepare->execute(array($categorie_id));

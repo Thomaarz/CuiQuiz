@@ -93,7 +93,7 @@ class ControllerQuizPerso
             return;
         }
 
-        $this->vue->formInsert($quiz_id);
+        $this->vue->formInsert();
     }
 
     public function delete($quiz_id) {

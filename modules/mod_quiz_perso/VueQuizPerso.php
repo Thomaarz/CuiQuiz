@@ -4,13 +4,13 @@
 class VueQuizPerso
 {
 
-    public function formInsert($quiz_id) {
+    public function formInsert() {
         ?>
 
         <div class="main-box">
             <h1 class="main-title">Inserer question</h1>
             <div class="main-subbox">
-                <form method="post">
+                <form method="post" autocomplete="off">
                     <div class="form-line">
                         <label class="big-2" for="enonce">Enonce</label>
                         <input class="input" type="text" name="enonce" placeholder="Enonce" required>
@@ -88,7 +88,7 @@ class VueQuizPerso
                     ?>
                 </nav>
                 <nav id="quiz-perso-manage-actions">
-                    <a class="orange-button" href="index.php?module=quiz_perso&action=create">Retour</a>
+                    <a class="orange-button" href="index.php?module=compte">Retour</a>
                     <a class="orange-button" href="index.php?module=quiz_perso&action=create">Creer un quiz</a>
                 </nav>
             </div>
@@ -145,7 +145,7 @@ class VueQuizPerso
         <div class="main-box">
             <h1 class="main-title">Creer un quiz</h1>
             <div class="main-subbox">
-                <form method="post">
+                <form method="post" autocomplete="off">
                     <div class="form-line">
                         <label class="big-2" for="name">Nom</label>
                         <input class="input" type="text" name="name" placeholder="Nom" required>

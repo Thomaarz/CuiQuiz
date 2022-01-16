@@ -142,7 +142,7 @@ INSERT INTO difficulty (difficulty_id, difficulty_name) VALUES (3, 'Difficile');
 INSERT INTO question (categorie_id, difficulty_id, question_enonce, question_reponse)
  VALUES (1, 1, 'Quel est le mâle de la poule ?', 'Coq');
 INSERT INTO question (categorie_id, difficulty_id, question_enonce, question_reponse)
- VALUES (1, 1, 'Quelle est la femelle du canard ?', 'Canne');
+ VALUES (1, 1, 'Quelle est la femelle du canard ?', 'Cane');
 INSERT INTO question (categorie_id, difficulty_id, question_enonce, question_reponse)
  VALUES (1, 1, 'Combien de dents ont les poules ?', '0');
 INSERT INTO question (categorie_id, difficulty_id, question_enonce, question_reponse)
@@ -249,5 +249,23 @@ INSERT INTO question (categorie_id, difficulty_id, question_enonce, question_rep
 INSERT INTO question (categorie_id, difficulty_id, question_enonce, question_reponse)
  VALUES (3, 3, 'En combien de set au maximum se déroule un match de badminton ?', '3');
 
+
+
+ /* SHOP*/
+
 INSERT INTO categorie_shop (categorie_shop_name) VALUES ('Grades');
-INSERT INTO categorie_shop (categorie_shop_name) VALUES ('Coins');
+INSERT INTO categorie_shop (categorie_shop_name) VALUES ('Titres');
+
+INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description, item_shop_image, item_shop_price)
+ VALUES (1, 'Oiseau', 'Un magnifique grade qui vous fera vous envoler vers le haut du classement !', 'oiseau.png', 500);
+INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description, item_shop_image, item_shop_price)
+ VALUES (1, 'Super Oiseau', 'Pour vous envoler toujours plus haut !', 'super_oiseau.png', 1000);
+
+INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description, item_shop_image, item_shop_price)
+ VALUES (2, 'Débutant', 'Affichez le titre Débutant dans le classement', 'debutant.png', 100);
+INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description, item_shop_image, item_shop_price)
+ VALUES (2, 'Expert', 'Affichez le titre Expert dans le classement', 'debutant.png', 200);
+ INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description, item_shop_image, item_shop_price)
+ VALUES (2, 'Pro', 'Affichez le titre Pro dans le classement', 'debutant.png', 300);
+ INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description, item_shop_image, item_shop_price)
+ VALUES (2, 'Légende', 'Affichez le titre Légende dans le classement', 'debutant.png', 400);

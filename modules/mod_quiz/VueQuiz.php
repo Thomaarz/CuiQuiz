@@ -27,27 +27,6 @@ class VueQuiz {
                         ?>
                     </nav>
                 </div>
-                <div id="quiz-categories-perso">
-                    <h2 class="orange-button">Communaute</h2>
-                    <p class="big-2">
-                        Jouez aux thèmes crées par la communauté !
-                    </p>
-                    <nav>
-                        <?php
-
-                        foreach ($quiz_community as $quiz) {
-                            ?>
-
-                            <a href="index.php?module=quiz&action=play&category=perso&id=<?=$quiz['quiz_perso_id'];?>" class="orange-button-small">
-                                <?=ucfirst($quiz['quiz_perso_name']);?>
-                            </a>
-
-                            <?php
-                        }
-
-                        ?>
-                    </nav>
-                </div>
             </div>
         </div>
 

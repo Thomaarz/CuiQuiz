@@ -2,8 +2,8 @@
 
 define('HOST', 'localhost');
 define('DB_NAME', 'cui_quiz');
-define('USER', 'quiz');
-define('PASS', 'cuicuijevole0');
+define('USER', 'admin');
+define('PASS', 'ceq54g96t7e95f');
 
 class Connection {
 

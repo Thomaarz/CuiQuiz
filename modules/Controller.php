@@ -9,6 +9,8 @@ include "mod_connection/ControllerConnection.php";
 include "mod_account/ControllerAccount.php";
 include "mod_quiz/ControllerQuiz.php";
 include "mod_quiz_perso/ControllerQuizPerso.php";
+include "mod_classement/ControllerClassement.php";
+include "mod_boutique/ControllerBoutique.php";
 
 class Controller {
 
@@ -41,6 +43,14 @@ class Controller {
                     break;
                 case 'compte':
                     $controller = new ControllerAccount();
+                    $controller->main();
+                    break;
+                case 'classement':
+                    $controller = new ControllerClassement();
+                    $controller->main();
+                    break;
+                case 'boutique':
+                    $controller = new ControllerBoutique();
                     $controller->main();
                     break;
                 case 'quiz':

@@ -1,9 +1,9 @@
 <?php
 
 define('HOST', 'localhost');
-define('DB_NAME', 'cui_quiz');
-define('USER', 'admin');
-define('PASS', 'ceq54g96t7e95f');
+define('DB_NAME', '******');
+define('USER', '******');
+define('PASS', '******');
 
 class Connection {
 

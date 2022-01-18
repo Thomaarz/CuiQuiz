@@ -110,6 +110,9 @@ class VueAccount
         ?>
         <div class="main-box">
             <h1 class="main-title">Historique</h1>
+            <p>
+                Regardez votre tentative pour vous améliorer !
+            </p>
             <div>
                 <?php
 
@@ -130,7 +133,9 @@ class VueAccount
 
                 ?>
             </div>
-            <a href="index.php?module=compte&action=historique" class="blue-button">Retour</a>
+            <div>
+                <a href="index.php?module=compte&action=historique" class="blue-button">Retour</a>
+            </div>
         </div>
         <?php
     }

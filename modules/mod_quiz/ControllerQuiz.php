@@ -25,7 +25,7 @@ class ControllerQuiz {
                 $this->play();
                 break;
             default:
-                $this->vue->choose($this->modele->getCategories(), $this->modele->getquizPerso());
+                $this->vue->choose($this->modele->getCategories());
                 break;
 
         }
@@ -46,7 +46,7 @@ class ControllerQuiz {
         }
 
         if (!isset($_GET['category'])) {
-            $this->vue->choose($this->modele->getCategories(), $this->modele->getquizPerso());
+            $this->vue->choose($this->modele->getCategories());
             return;
         }
 
@@ -55,9 +55,14 @@ class ControllerQuiz {
         // Quiz perso
         if ($category_id === "perso") {
             if (!isset($_GET['id'])) {
+                $this->vue->choose($this->modele->getCategories());
                 return;
             }
             $_SESSION['questions'] = $this->modele->getquizPersoQuestions($_GET['id']);
+            if (!isset($_SESSION['questions']) || empty($_SESSION['questions'])) {
+                $this->vue->choose($this->modele->getCategories());
+                return;
+            }
             $this->vue->quizPerso($_SESSION['questions']);
             return;
         }

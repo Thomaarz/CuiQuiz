@@ -5,6 +5,9 @@
 class Vue
 {
 
+    /**
+     * Show the header
+     */
     public function header() {
         ?>
 
@@ -28,6 +31,9 @@ class Vue
         <?php
     }
 
+    /**
+     * Show the menu nav
+     */
     public function nav() {
         ?>
 
@@ -41,6 +47,9 @@ class Vue
         <?php
     }
 
+    /**
+     * Show the footer
+     */
     public function footer() {
         ?>
 
@@ -48,17 +57,17 @@ class Vue
             <div>
                 <strong class="white underline">Catégories:</strong>
                 <nav>
-                    <a href="index.php?module=quiz&category=sport" class="link">Sport</a>
-                    <a href="index.php?module=quiz&category=oiseaux" class="link">Oiseaux</a>
-                    <a href="index.php?module=quiz&category=histoire" class="link">Histoire</a>
+                    <a href="index.php?module=quiz&action=play&category=3" class="link">Sport</a>
+                    <a href="index.php?module=quiz&action=play&category=1" class="link">Oiseaux</a>
+                    <a href="index.php?module=quiz&action=play&category=2" class="link">Histoire</a>
                 </nav>
             </div>
             <div>
                 <strong class="white underline">CuiQuiz:</strong>
                 <nav>
                     <a href="index.php?module=accueil" class="link">Accueil</a>
-                    <a href="index.php?module=contact" class="link">Contact</a>
-                    <a href="index.php?module=about" class="link">About</a>
+                    <a href="mailto:cuicuiz@gmail.com" class="link">Contact</a>
+                    <a href="index.php?module=accueil" class="link">About</a>
                 </nav>
             </div>
         </footer>

@@ -37,7 +37,6 @@ class ControllerConnection {
         // Register form not send
         if (!isset($_POST['register-form'])) {
             $this->vue->formRegister();
-            header( "refresh:1;url=index.php?module=compte");
             return;
         }
 

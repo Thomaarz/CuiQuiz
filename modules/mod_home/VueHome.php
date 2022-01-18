@@ -22,7 +22,7 @@ class VueHome
                 </p>
             </div>
             <div class="main-subbox">
-                <h2 class="blue-button">Actualites</h2>
+                <h2 class="blue-button">A Propos</h2>
                 <p class="big-1">Y a rien :/</p>
             </div>
         </div>

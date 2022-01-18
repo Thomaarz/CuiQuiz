@@ -3,7 +3,7 @@
 
 class VueQuiz {
 
-    public function choose($categories, $quiz_community) {
+    public function choose($categories) {
         ?>
 
         <div class="main-box">

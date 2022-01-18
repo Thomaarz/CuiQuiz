@@ -21,6 +21,9 @@ class Controller {
         Connection::initConnection();
     }
 
+    /**
+     * Display the main content according to the module
+     */
     public function main() {
         $module = "accueil";
 
@@ -28,6 +31,7 @@ class Controller {
             $module = $_GET['module'];
         }
 
+        // Header + nav
         $this->vue->header();
         $this->vue->nav();
 
@@ -72,6 +76,7 @@ class Controller {
 
         <?php
 
+        // Footer
         $this->vue->footer();
     }
 }

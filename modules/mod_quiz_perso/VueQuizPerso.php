@@ -4,6 +4,9 @@
 class VueQuizPerso
 {
 
+    /**
+     * Formulaire d'insertion
+     */
     public function formInsert() {
         ?>
 
@@ -32,6 +35,9 @@ class VueQuizPerso
         <?php
     }
 
+    /**
+     * Formulaire de modification
+     */
     public function formUpdate($question) {
         ?>
 
@@ -60,6 +66,9 @@ class VueQuizPerso
         <?php
     }
 
+    /**
+     * Manager ses quiz perso
+     */
     public function manage($quiz) {
         ?>
 
@@ -97,6 +106,9 @@ class VueQuizPerso
         <?php
     }
 
+    /**
+     * Manager un quiz perso
+     */
     public function view($quiz, $questions) {
         ?>
 
@@ -139,6 +151,9 @@ class VueQuizPerso
         <?php
     }
 
+    /**
+     * Creer un quiz perso
+     */
     public function create() {
         ?>
 

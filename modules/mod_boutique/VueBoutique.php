@@ -16,7 +16,9 @@ class VueBoutique
 
                     <a href="index.php?module=boutique&category=<?=$category['categorie_shop_id'];?>" class="shop-box">
                         <h1 class="blue"><?=$category['categorie_shop_name'];?></h1>
-                        <img alt="<?=$category['categorie_shop_name'];?>" src="images/shop/<?=$category['categorie_shop_image'];?>" class="shop-image">
+                        <figure>
+                            <img alt="<?=$category['categorie_shop_name'];?>" src="images/shop/<?=$category['categorie_shop_image'];?>" class="shop-image">
+                        </figure>
                         <p><?=$category['categorie_shop_description'];?></p>
                         <strong class="blue-button-small">Clique ici</strong>
                     </a>
@@ -42,7 +44,9 @@ class VueBoutique
 
                     <a href="index.php?module=boutique&action=buy&item=<?=$item['item_shop_id'];?>" class="shop-box">
                         <h1 class="blue"><?=$item['item_shop_name'];?></h1>
-                        <img alt="<?=$item['item_shop_name'];?>" src="images/shop/<?=$item['item_shop_image'];?>" class="shop-image">
+                        <figure>
+                            <img alt="<?=$item['item_shop_name'];?>" src="images/shop/<?=$item['item_shop_image'];?>" class="shop-image">
+                        </figure>
                         <p><?=$item['item_shop_description'];?></p>
                         <strong class="blue-button-small"><?=$item['item_shop_price'];?> Coins</strong>
                     </a>

@@ -121,8 +121,8 @@ class VueQuizPerso
                     ?>
 
                     <div class="quiz-perso-line">
-                        <h2><?=$question['question_perso_enonce'];?></h2>
-                        <h2><?=$question['question_perso_reponse'];?></h2>
+                        <h2><?=ModeleQuizPerso::limitLenght($question['question_perso_enonce'], 30);?></h2>
+                        <h2><?=ModeleQuizPerso::limitLenght($question['question_perso_reponse'], 15);?></h2>
                         <div class="quiz-perso-line-actions">
                             <a id="quiz-view-edit" class="blue-button-small" href="index.php?module=quiz_perso&action=edit&question_id=<?=$question['question_perso_id'];?>">
                                 Modifier

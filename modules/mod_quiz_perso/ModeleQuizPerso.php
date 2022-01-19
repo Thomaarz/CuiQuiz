@@ -93,4 +93,14 @@ class ModeleQuizPerso extends Connection
         $prepare->execute(array($quiz_perso_id));
     }
 
+    /**
+     * Si une chaîne est trop longue, elle sera coupé et '...' sera mis à la fin
+     */
+    public static function limitLenght($string, $amount) {
+        if (strlen($string) > $amount) {
+            $string = substr($string, 0, $amount - 3) . '...';
+        }
+        return $string;
+    }
+
 }

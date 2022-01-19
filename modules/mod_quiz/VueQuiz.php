@@ -114,8 +114,8 @@ class VueQuiz {
                 </div>
 
                 <p class="big-2">
-                    Bien joué à toi ! Clique <a class="blue-button-small" href="index.php?module=quiz&action=choose">ici</a> pour
-                    rejouer !
+                    Bien joué à toi ! Clique <a class="blue-button-small" href="index.php?module=accueil">ici</a> pour
+                    aller à l'acceuil !
                 </p>
             </div>
         </div>

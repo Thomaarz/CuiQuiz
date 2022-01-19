@@ -4,7 +4,7 @@
 class VueHome
 {
 
-    public function main() {
+    public function main($actus) {
         ?>
 
         <div class="main-box">
@@ -31,6 +31,53 @@ class VueHome
                     Si vous voulez nous contacter, notre nid est disponible dans l'onglet contact. Faites nous des dons de graines on a faim !<br/>
                     CuiCui !
                 </p>
+            </div>
+
+            <div class="main-subbox">
+                <h2 class="blue-button">Actualites</h2>
+
+                <?php
+                if (isset($_SESSION['admin']) && $_SESSION['admin']) {
+                    ?>
+                    <a class="blue-button-small" href="index.php?module=administration&category=news&action=create">Ajouter une Actualite</a>
+                    <?php
+                }
+
+                foreach ($actus as $actu) {
+                    ?>
+
+                    <div class="actus-box">
+                        <div class="actus-box-line">
+                            <h1 class="orange-button"><?=$actu['actus_title'];?></h1>
+                            <h3 class="white">
+                                <?=$actu['actus_sender'];?> <span class="yellow">-</span>
+                                <?=date('d/m/Y', strtotime($actu['actus_date']));?> <span class="yellow">-</span>
+                                <?=date('H', strtotime($actu['actus_date'])) . 'H' . date('i', strtotime($actu['actus_date']));?>
+                                <?php
+
+                                if (isset($_SESSION['admin']) && $_SESSION['admin']) {
+                                    ?>
+                                    <span class="yellow">-</span>
+                                    <a class="blue-button-small" href="index.php?module=administration&category=news&action=edit&actus_id=<?=$actu['actus_id'];?>">
+                                        Modifier
+                                    </a>
+                                    <span class="yellow">-</span>
+                                    <a class="blue-button-small" href="index.php?module=administration&category=news&action=delete&actus_id=<?=$actu['actus_id'];?>">
+                                        Supprimer
+                                    </a>
+                                    <?php
+                                }
+
+                                ?>
+                            </h3>
+                        </div>
+                        <p class="big-2"><?=$actu['actus_lore'];?></p>
+                    </div>
+
+                    <?php
+                }
+
+                ?>
             </div>
         </div>
 

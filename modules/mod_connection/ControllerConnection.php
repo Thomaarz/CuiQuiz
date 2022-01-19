@@ -100,6 +100,7 @@ class ControllerConnection {
         }
 
         $_SESSION['user_name'] = $user_name;
+        $_SESSION['admin'] = $user['rank_id'] >= 4;
         header( "refresh:0;url=index.php?module=compte");
     }
 
@@ -112,6 +113,7 @@ class ControllerConnection {
 
         // Disconnect & unset session variable
         unset($_SESSION['user_name']);
+        unset($_SESSION['admin']);
         $this->connect();
         header( "refresh:0;url=index.php?module=connection&action=connect");
     }

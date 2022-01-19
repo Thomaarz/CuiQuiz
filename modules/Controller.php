@@ -11,6 +11,7 @@ include "mod_quiz/ControllerQuiz.php";
 include "mod_quiz_perso/ControllerQuizPerso.php";
 include "mod_classement/ControllerClassement.php";
 include "mod_boutique/ControllerBoutique.php";
+include "mod_administration/ControllerAdministration.php";
 
 class Controller {
 
@@ -41,6 +42,10 @@ class Controller {
             <?php
 
             switch ($module) {
+                case 'administration':
+                    $controller = new ControllerAdministration();
+                    $controller->main();
+                    break;
                 case 'connection':
                     $controller = new ControllerConnection();
                     $controller->main();

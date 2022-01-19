@@ -1,4 +1,6 @@
 <?php
+@ini_set('display_errors', 'on');
+
 session_start();
 
 include "modules/Controller.php";
@@ -31,6 +33,9 @@ if (isset($_GET['module'])) {
     <link rel="stylesheet" type="text/css" href="style/shop.css">
     <link rel="stylesheet" type="text/css" href="style/classement.css">
     <link rel="stylesheet" type="text/css" href="style/historique.css">
+    <link rel="stylesheet" type="text/css" href="style/administration.css">
+    <link rel="stylesheet" type="text/css" href="style/actus.css">
+
 
 </head>
 <body>

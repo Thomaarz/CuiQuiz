@@ -12,7 +12,7 @@ class Vue
         ?>
 
         <header>
-            <a href="index.php?module=accueil"><img src="images/logo.png" alt="CuiCuiz" id="header-img"></a>
+            <a href="index.php?module=accueil"><img src="images/logo_2.png" alt="CuiCuiz" id="header-img"></a>
             <?php
 
             if (isset($_SESSION['user_name'])) {
@@ -63,7 +63,7 @@ class Vue
                 </nav>
             </div>
             <div>
-                <strong class="white underline">CuiQuiz:</strong>
+                <strong class="white underline">CuiCuiz:</strong>
                 <nav>
                     <a href="index.php?module=accueil" class="link">Accueil</a>
                     <a href="mailto:cuicuiz@gmail.com" class="link">Contact</a>

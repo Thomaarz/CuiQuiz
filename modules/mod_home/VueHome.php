@@ -23,7 +23,14 @@ class VueHome
             </div>
             <div class="main-subbox">
                 <h2 class="blue-button">A Propos</h2>
-                <p class="big-1">Y a rien :/</p>
+                <p class="big-1">
+                    Nous sommes 3 oisillons et nous avons pondu ce site web dans le cadre de nos études. Ce site web est parfait pour vous amusez et en même temps pour apprendre.
+                </p>
+                <p class="big-1">
+                    Allez mes poulets prenez votre envol vers ce quizz ludique et amusant.
+                    Si vous voulez nous contacter, notre nid est disponible dans l'onglet contact. Faites nous des dons de graines on a faim !<br/>
+                    CuiCui !
+                </p>
             </div>
         </div>
 

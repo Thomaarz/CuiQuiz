@@ -136,7 +136,6 @@ INSERT INTO rank (rank_id, rank_name) VALUES (2, 'Oiseau');
 INSERT INTO rank (rank_id, rank_name) VALUES (3, 'Super Oiseau');
 INSERT INTO rank (rank_id, rank_name) VALUES (4, 'Administrateur');
 
-INSERT INTO titre (titre_id, titre_name) VALUES (0, 'Nouveau');
 INSERT INTO titre (titre_id, titre_name) VALUES (1, 'Débutant');
 INSERT INTO titre (titre_id, titre_name) VALUES (2, 'Expert');
 INSERT INTO titre (titre_id, titre_name) VALUES (3, 'Pro');
@@ -276,8 +275,6 @@ INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description,
 INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description, item_shop_image, item_shop_price)
  VALUES (1, 'Super Oiseau', 'Pour vous envoler toujours plus haut !', 'super_oiseau.png', 1000);
 
-INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description, item_shop_image, item_shop_price)
- VALUES (2, 'Débutant', 'Affichez le titre Débutant dans le classement', 'debutant.png', 100);
 INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description, item_shop_image, item_shop_price)
  VALUES (2, 'Expert', 'Affichez le titre Expert dans le classement', 'debutant.png', 200);
 INSERT INTO item_shop (categorie_shop_id, item_shop_name, item_shop_description, item_shop_image, item_shop_price)

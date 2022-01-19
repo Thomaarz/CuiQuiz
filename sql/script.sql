@@ -129,6 +129,14 @@ CREATE TABLE IF NOT EXISTS reponse_perso (
     CONSTRAINT fk_question_perso_id FOREIGN KEY (question_perso_id) REFERENCES question_perso(question_perso_id) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS actus (
+    actus_id int(11) AUTO_INCREMENT UNIQUE,
+    actus_sender VARCHAR(255) NOT NULL,
+    actus_title VARCHAR(255) NOT NULL,
+    actus_lore TEXT NOT NULL,
+    actus_date timestamp NOT NULL DEFAULT current_timestamp()
+);
+
 /* INSERTS */
 
 INSERT INTO rank (rank_id, rank_name) VALUES (1, 'Joueur');
